@@ -1,4 +1,4 @@
-# Gamename!
+# Gamename! :video_game::boy::girl::new_moon:
 
 
 ## Objetivo
@@ -52,7 +52,7 @@
 
 ## Sistema de vidas
 
->O jogo não terá sistemas de vidas, ou seja, a criança poderá tentar quantas vezes forem necessário para o aprendizado e fixação da atividade.
+>O jogo não terá sistemas de vidas, ou seja, a criança poderá tentar quantas vezes forem necessário para o aprendizado e fixação da atividade :heart:.
 
 ## Sistema de pontos
 
@@ -79,3 +79,5 @@ graph LR
     C --> E((atividade 2))
     C --> F((atividade 3))
 ```
+
+
