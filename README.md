@@ -1,7 +1,7 @@
 # Gamename!
 
 
-# Objetivo
+## Objetivo
 
 > O nomedojogo tem como principal função usar a tecnologia da informação para auxiliar no processo de aprendizado e servir como ferramenta de apoio no processo de desenvolvimento, alfabetização e interação social de crianças com autismo. A aplicação será baseada e desenvolvida nas premissas do Programa de Tratamento e Educação para Autistas e Crianças com Déficits relacionados com a Comunicação (**TEACCH**) um programa mundialmente utilizado no processo de alfabetização de crianças com transtorno de desenvolvimento e também disponibilizará de uma interface auto explicativa.
 
