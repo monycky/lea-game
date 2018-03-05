@@ -7,18 +7,43 @@ local scene = composer.newScene()
 -- the scene is removed entirely (not recycled) via "composer.removeScene()"
 -- -----------------------------------------------------------------------------------
  
- 
-
- 
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
+
+local bg
+local titlel
+local button
+
+local function changeScenes()
+	composer.gotoScene("scene2", {effect = "slideLeft", time = 500})
+end
+
+
 
  
 -- create()
 function scene:create( event )
  
     local sceneGroup = self.view
+
+
+    bg = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentHeight)
+    bg:setFillColor(86, 191, 209)
+    sceneGroup:insert(bg)
+
+    title = display.newText("HOME", display.contentCenterX, display.contentCenterY, "", 60)
+    title:setFillColor(0,0,1)
+    sceneGroup:insert(title)
+
+
+    button = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.3, display.contentHeight*.05)
+    button:setFillColor( 1, 0, 0 )	
+    sceneGroup:insert(button)
+
+    button: addEventListener( "tap", changeScenes )
+
+
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
 end
