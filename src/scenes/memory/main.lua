@@ -39,7 +39,15 @@ for count = 1,3 do
         --Give each a button a name
         button[count].myName = buttonImages[temp]
         button[count].number = totalButtons
-         
+        
+        --Remove button from buttonImages table
+        table.remove(buttonImages, temp)
+                
+        --Set a cover to hide the button image
+        buttonCover[totalButtons] = display.newImage("button.png");
+        buttonCover[totalButtons].x = x; buttonCover[totalButtons].y = y;
+        totalButtons = totalButtons + 1
+        
         --Attach listener event to each button
         button[count].touch = memoryGame     
         button[count]:addEventListener( "touch", button[count] )
