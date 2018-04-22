@@ -39,6 +39,9 @@ for count = 1,3 do
         --Give each a button a name
         button[count].myName = buttonImages[temp]
         button[count].number = totalButtons
-        
-     end
+         
+        --Attach listener event to each button
+        button[count].touch = memoryGame     
+        button[count]:addEventListener( "touch", button[count] )
+    end
 end
