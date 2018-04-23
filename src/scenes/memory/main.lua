@@ -5,12 +5,10 @@ local image = display.newImageRect( "bg.jpg", 900, 700)
 image.x = display.contentCenterX
 image.y = display.contentCenterY
 
-
 --Declare button, buttonCover, and buttonImages table
 local button = {}
 local buttonCover = {}
 local buttonImages = {1,1, 2,2, 3,3}
-
 
 --Declare a totalButtons variable to track number of buttons on screen
 local totalButtons = 0
@@ -19,6 +17,12 @@ local totalButtons = 0
 local secondSelect = 0
 local checkForMatch = false
 
+--Declare and prime a last button selected variable
+--local lastButton = display.newImage("1.png");   
+--lastButton.myName = 1;
+
+--Set starting point for button grid
+x = -50
 
 --Set up game function
 function memoryGame(object, event)
@@ -44,7 +48,7 @@ function memoryGame(object, event)
                 --If buttons DO match, remove buttons
                 elseif(lastButton.myName == object.myName) then
                     timer.performWithDelay(1250, function()                     
-                        matchText.text = " ";
+                      --  matchText.text = " ";
                         checkForMatch = false;
                         secondSelect = 0;
                         lastButton:removeSelf();
@@ -91,3 +95,4 @@ for count = 1,3 do
         button[count]:addEventListener( "touch", button[count] )
     end
 end
+
