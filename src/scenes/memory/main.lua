@@ -20,6 +20,44 @@ local secondSelect = 0
 local checkForMatch = false
 
 
+--Set up game function
+function memoryGame(object, event)
+    if(event.phase == "began") then             
+        if(checkForMatch == false and secondSelect == 0) then
+            --Flip over first button
+            buttonCover[object.number].isVisible = false;
+            lastButton = object
+            checkForMatch = true            
+        elseif(checkForMatch == true) then
+            if(secondSelect == 0) then
+                --Flip over second button
+                buttonCover[object.number].isVisible = false;
+                secondSelect = 1;
+                --If buttons do not match, flip buttons over
+                if(lastButton.myName ~= object.myName) then
+                    timer.performWithDelay(1250, function()                     
+                        checkForMatch = false;
+                        secondSelect = 0;
+                        buttonCover[lastButton.number].isVisible = true;
+                        buttonCover[object.number].isVisible = true;
+                    end, 1)                 
+                --If buttons DO match, remove buttons
+                elseif(lastButton.myName == object.myName) then
+                    timer.performWithDelay(1250, function()                     
+                        matchText.text = " ";
+                        checkForMatch = false;
+                        secondSelect = 0;
+                        lastButton:removeSelf();
+                        object:removeSelf();
+                        buttonCover[lastButton.number]:removeSelf();
+                        buttonCover[object.number]:removeSelf();
+                    end, 1) 
+                end             
+            end         
+        end
+    end
+end
+
 --Place buttons on screen
 for count = 1,3 do
     x = x + 220
