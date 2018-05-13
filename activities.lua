@@ -6,47 +6,55 @@ local scene = composer.newScene()
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 
-local bg
-local titlel
-local playButton
-local creditButton
-local ladybird 
+local activitiesBg
+local activitiesTitle
+local dragGameLevelButton
+local memoryGameLevelButton
+local backToHomeButton
 
 
-local function changeScenes()
-	composer.gotoScene("level", {effect = "slideLeft", time = 500})
+local function goToDragGameLevel()
+	composer.gotoScene("dragGameLevel", {effect = "slideLeft", time = 500})
 end
 
-local function credits()
-    composer.gotoScene("credit", {effect = "slideLeft", time = 500})
+local function goToMemoryGameLevel()
+    composer.gotoScene("memoryGameLevel", {effect = "slideLeft", time = 500})
 end
+
+local function goToHome()
+    composer.gotoScene("home", {effect = "slideLeft", time = 500})
+end
+
  
 -- create()
 function scene:create( event )
- 
---    ladybird = display.newImage('ladybird.png', 80, 170) -- OK
 
     local sceneGroup = self.view
 
+    activitiesBg = display.newImageRect("background.png", 1050, 700)
+    sceneGroup:insert(activitiesBg)
 
-    bg = display.newImageRect("background.png", 1050, 700)
-    sceneGroup:insert(bg)
-
-    title = display.newText("activities screen", 235, 90, "", 30)
-    title:setFillColor(255, 255, 255)
-    sceneGroup:insert(title)
-
-
-    playButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    playButton:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(playButton)
-    playButton: addEventListener( "tap", changeScenes )
+    activitiesTitle = display.newText("activities screen", 235, 90, "", 30)
+    activitiesTitle:setFillColor(255, 255, 255)
+    sceneGroup:insert(activitiesTitle)
 
 
-    creditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    creditButton:setFillColor(255/255, 255/255, 0/255)
-    sceneGroup:insert(creditButton)
-    creditButton: addEventListener( "tap", credits )
+    dragGameLevelButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    dragGameLevelButton:setFillColor(255/225, 100/255, 120/255)
+    sceneGroup:insert(dragGameLevelButton)
+    dragGameLevelButton: addEventListener("tap", goToDragGameLevel)
+
+
+    memoryGameLevelButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
+    memoryGameLevelButton:setFillColor(255/255, 155/255, 0/255)
+    sceneGroup:insert(memoryGameLevelButton)
+    memoryGameLevelButton: addEventListener("tap", goToMemoryGameLevel) 
+
+
+    backToHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
+    backToHomeButton:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(backToHomeButton)
+    backToHomeButton: addEventListener("tap", goToHome)
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
@@ -77,7 +85,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    creditButton:removeEventListener( "tap", changeScenes )
+    backToHomeButton:removeEventListener("tap", goToHome)
     end
 end
  
