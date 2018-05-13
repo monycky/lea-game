@@ -6,22 +6,21 @@ local scene = composer.newScene()
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 
-local bg
-local titlel
-local playButton
-local creditButton
-local aboutButton
-local ladybird 
+local homeBg
+local homeTitle
+local homePlayButton
+local homeCreditButton
+local homeAboutButton
+local homeIcon 
 
 
-local function changeScenes()
-	composer.gotoScene("level", {effect = "slideLeft", time = 500})
+local function goToActivities()
+	composer.gotoScene("activities", {effect = "slideLeft", time = 500})
 end
 
-local function credits()
+local function goToCredits()
     composer.gotoScene("credit", {effect = "slideLeft", time = 500})
 end
-
 
 local function goToAbout()
     composer.gotoScene("about", {effect = "slideLeft", time = 500})
@@ -30,40 +29,33 @@ end
  
 -- create()
 function scene:create( event )
- 
---    ladybird = display.newImage('ladybird.png', 80, 170) -- OK
-
     local sceneGroup = self.view
 
+--    homeIcon = display.newImage('ladybird.png', 80, 170) -- OK
 
-    bg = display.newImageRect("background.png", 1050, 700)
-    sceneGroup:insert(bg)
+    homeBg = display.newImageRect("background.png", 1050, 700)
+    sceneGroup:insert(homeBg)
 
-    title = display.newText("LEA - inicial screen", 235, 90, "", 30)
-    title:setFillColor(255, 255, 255)
-    sceneGroup:insert(title)
-
-
-    playButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    playButton:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(playButton)
-    playButton: addEventListener( "tap", changeScenes )
+    homeTitle = display.newText("LEA - inicial screen", 235, 90, "", 30)
+    homeTitle:setFillColor(255, 255, 255)
+    sceneGroup:insert(homeTitle)
 
 
-    creditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    creditButton:setFillColor(255/255, 255/255, 0/255)
-    sceneGroup:insert(creditButton)
-    creditButton: addEventListener( "tap", credits )
-
-    aboutButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
-    aboutButton:setFillColor(255/255, 155/255, 0/255)
-    sceneGroup:insert(aboutButton)
-    aboutButton: addEventListener( "tap", goToAbout )
+    homePlayButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    homePlayButton:setFillColor(255/225, 100/255, 120/255)
+    sceneGroup:insert(homePlayButton)
+    homePlayButton: addEventListener("tap", goToActivities)
 
 
+    homeCreditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
+    homeCreditButton:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(homeCreditButton)
+    homeCreditButton: addEventListener("tap", goToCredits)
 
-    -- Code here runs when the scene is first created but has not yet appeared on screen
- 
+    homeAboutButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
+    homeAboutButton:setFillColor(255/255, 155/255, 0/255)
+    sceneGroup:insert(homeAboutButton)
+    homeAboutButton: addEventListener("tap", goToAbout) 
 end
  
 -- show()
@@ -91,7 +83,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    creditButton:removeEventListener( "tap", changeScenes )
+    homeCreditButton:removeEventListener("tap", goToActivities)
     end
 end
  
@@ -100,8 +92,8 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    sceneGroup:remove(playButton)
-    sceneGroup:remove(creditButton)
+    sceneGroup:remove(homePlayButton)
+    sceneGroup:remove(homeCreditButton)
  
 end
  
