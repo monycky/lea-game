@@ -2,5 +2,5 @@ local composer = require("composer")
 
 display.setStatusBar(display.HiddenStatusBar)
 
-composer.gotoScene("home", {effect = "fade", time = 500})
+composer.gotoScene("activities", {effect = "fade", time = 500})
 
