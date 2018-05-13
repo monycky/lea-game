@@ -1,52 +1,64 @@
 local composer = require( "composer" )
  
 local scene = composer.newScene()
- -- -----------------------------------------------------------------------------------
+ 
+-- -----------------------------------------------------------------------------------
+-- Code outside of the scene event functions below will only be executed ONCE unless
+-- the scene is removed entirely (not recycled) via "composer.removeScene()"
+-- -----------------------------------------------------------------------------------
+ 
+-- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
-local bg
-local titlel
+ 
+local bg 
+local title
 local button
-local ladybird 
-
+local button2
 
 local function changeScenes()
-	composer.gotoScene("level", {effect = "slideLeft", time = 500})
+    composer.gotoScene("levelselect", {effect = "slideRight", time = 500})
 end
 
-local function scene1()
-    composer.gotoScene("credit", {effect = "slideLeft", time = 500})
-end
- 
+
+
 -- create()
 function scene:create( event )
  
---    ladybird = display.newImage('ladybird.png', 80, 170) -- OK
-
-    local sceneGroup = self.view
+       local sceneGroup = self.view
 
 
+    
     bg = display.newImageRect("background.png", 1050, 700)
     sceneGroup:insert(bg)
 
-    title = display.newText("initial screen", 235, 90, "", 30)
-    title:setFillColor(255, 255, 255)
+    title = display.newText("level screen", 235, 90, "", 30)
+    title:setFillColor(1,1,1)
     sceneGroup:insert(title)
 
-
     button = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    button:setFillColor(255/225, 100/255, 120/255)
+    button:setFillColor(255/255, 255/255, 0/255)
     sceneGroup:insert(button)
+
+
+    button2 = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    button:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(button2)
+
+
     button: addEventListener( "tap", changeScenes )
 
+    button2: addEventListener( "tap", changeScenes )
 
-    button2 = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    button2:setFillColor(255/255, 255/255, 0/255)
-    sceneGroup:insert(button)
-    button2: addEventListener( "tap", scene1 )
 
-    -- Code here runs when the scene is first created but has not yet appeared on screen
- 
+
+end
+
+
+ local function handleCancelButtonEvent( event )
+    if ( "ended" == event.phase ) then
+        composer.gotoScene( "level", { effect="crossFade", time=333 } )
+    end
 end
  
 -- show()
@@ -63,6 +75,7 @@ function scene:show( event )
  
     end
 end
+ 
  
 -- hide()
 function scene:hide( event )

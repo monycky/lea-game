@@ -103,7 +103,7 @@ function showGameView:tap(e)
 	
 	-- Place holders
 	--sombra dos shapes (lugar certo)
-	sHolder = display.newImage('sHolder.png', 260, 170) -- OK
+	sHolder = display.newImage('sHolder.png', 0, 100) -- OK
 	
 	-- Instructions
 	
