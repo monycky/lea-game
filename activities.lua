@@ -8,7 +8,8 @@ local scene = composer.newScene()
 
 local bg
 local titlel
-local button
+local playButton
+local creditButton
 local ladybird 
 
 
@@ -16,7 +17,7 @@ local function changeScenes()
 	composer.gotoScene("level", {effect = "slideLeft", time = 500})
 end
 
-local function scene1()
+local function credits()
     composer.gotoScene("credit", {effect = "slideLeft", time = 500})
 end
  
@@ -36,16 +37,16 @@ function scene:create( event )
     sceneGroup:insert(title)
 
 
-    button = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    button:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(button)
-    button: addEventListener( "tap", changeScenes )
+    playButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    playButton:setFillColor(255/225, 100/255, 120/255)
+    sceneGroup:insert(playButton)
+    playButton: addEventListener( "tap", changeScenes )
 
 
-    button2 = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    button2:setFillColor(255/255, 255/255, 0/255)
-    sceneGroup:insert(button)
-    button2: addEventListener( "tap", scene1 )
+    creditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
+    creditButton:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(creditButton)
+    creditButton: addEventListener( "tap", credits )
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
@@ -71,14 +72,12 @@ function scene:hide( event )
  
     local sceneGroup = self.view
     local phase = event.phase
-    sceneGroup:remove(button2)
  
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    sceneGroup:removeEventListener( "tap", changeScenes ) 
-    button2:removeEventListener( "tap", changeScenes )
+    creditButton:removeEventListener( "tap", changeScenes )
     end
 end
  
@@ -87,8 +86,8 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    sceneGroup:remove(button)
-    sceneGroup:remove(button2)
+    sceneGroup:remove(playButton)
+    sceneGroup:remove(creditButton)
  
 end
  
