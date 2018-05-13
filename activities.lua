@@ -56,7 +56,7 @@ function scene:show( event )
  
     local sceneGroup = self.view
     local phase = event.phase
- 
+    
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
@@ -71,13 +71,13 @@ function scene:hide( event )
  
     local sceneGroup = self.view
     local phase = event.phase
+    sceneGroup:remove(button2)
  
     if ( phase == "will" ) then
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-        -- Code here runs immediately after the scene goes entirely off screen
- 
+    sceneGroup:removeEventListener( "tap", changeScenes ) 
     end
 end
  
@@ -86,7 +86,8 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    -- Code here runs prior to the removal of scene's view
+    sceneGroup:remove(button)
+    sceneGroup:remove(button2)
  
 end
  
