@@ -12,6 +12,7 @@ local homePlayButton
 local homeCreditButton
 local homeAboutButton
 local homeIcon 
+local girl
 
 
 local function goToActivities()
@@ -33,29 +34,28 @@ function scene:create( event )
 
 --    homeIcon = display.newImage('ladybird.png', 80, 170) -- OK
 
-    homeBg = display.newImageRect("background.png", 1050, 700)
+    homeBg = display.newImageRect("bg.png", 1050, 700)
     sceneGroup:insert(homeBg)
 
-    homeTitle = display.newText("LEA - inicial screen", 235, 90, "", 30)
+    girl = display.newImage("girl.png", 100, 190)
+    sceneGroup:insert(girl)
+
+    homeTitle = display.newText("LEA - name game", 345, 90, "", 30)
     homeTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(homeTitle)
 
-
-    homePlayButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    homePlayButton:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(homePlayButton)
-    homePlayButton: addEventListener("tap", goToActivities)
-
-
-    homeCreditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    homeCreditButton:setFillColor(255/255, 255/255, 0/255)
+    homeCreditButton = display.newImage('credits.png', 280, 250) -- OK
     sceneGroup:insert(homeCreditButton)
-    homeCreditButton: addEventListener("tap", goToCredits)
+    homeCreditButton:addEventListener("tap", goToCredits)
 
-    homeAboutButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
-    homeAboutButton:setFillColor(255/255, 155/255, 0/255)
+    homePlayButton = display.newImage('play.png', 375, 190) -- OK
+    sceneGroup:insert(homePlayButton)
+    homePlayButton:addEventListener("tap", goToActivities)
+
+    homeAboutButton = display.newImage('about.png', 450, 250) -- OK
     sceneGroup:insert(homeAboutButton)
-    homeAboutButton: addEventListener("tap", goToAbout) 
+    homeAboutButton:addEventListener("tap", goToAbout)
+
 end
  
 -- show()
@@ -96,7 +96,6 @@ function scene:destroy( event )
     sceneGroup:remove(homeCreditButton)
  
 end
- 
  
 -- -----------------------------------------------------------------------------------
 -- Scene event function listeners
