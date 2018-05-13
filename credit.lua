@@ -14,7 +14,7 @@ local scene = composer.newScene()
 local creditBg
 local creditTitle
 local creditText
-local iconCredit
+local creditIcon
 local backHomeButton
 
 local function goToHome()
@@ -74,7 +74,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-        backHomeButton:removeEventListener( "tap", goToHome )
+     --   backHomeButton:removeEventListener( "tap", goToHome )
        
 
 
@@ -91,7 +91,7 @@ function scene:destroy( event )
     sceneGroup:remove(creditBg)
     sceneGroup:remove(creditTitle)
     sceneGroup:remove(creditText)
-    sceneGroup:remove(iconCredit)
+    sceneGroup:remove(creditIcon)
  
 
     -- Code here runs prior to the removal of scene's view
