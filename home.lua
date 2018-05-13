@@ -1,12 +1,16 @@
 local composer = require( "composer" )
  
 local scene = composer.newScene()
- -- -----------------------------------------------------------------------------------
+
+-- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
+
 local bg
 local titlel
-local button
+local playButton
+local creditButton
+local aboutButton
 local ladybird 
 
 
@@ -14,9 +18,15 @@ local function changeScenes()
 	composer.gotoScene("level", {effect = "slideLeft", time = 500})
 end
 
-local function scene1()
+local function credits()
     composer.gotoScene("credit", {effect = "slideLeft", time = 500})
 end
+
+
+local function goToAbout()
+    composer.gotoScene("about", {effect = "slideLeft", time = 500})
+end
+
  
 -- create()
 function scene:create( event )
@@ -29,21 +39,28 @@ function scene:create( event )
     bg = display.newImageRect("background.png", 1050, 700)
     sceneGroup:insert(bg)
 
-    title = display.newText("initial screen", 235, 90, "", 30)
+    title = display.newText("LEA - inicial screen", 235, 90, "", 30)
     title:setFillColor(255, 255, 255)
     sceneGroup:insert(title)
 
 
-    button = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    button:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(button)
-    button: addEventListener( "tap", changeScenes )
+    playButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    playButton:setFillColor(255/225, 100/255, 120/255)
+    sceneGroup:insert(playButton)
+    playButton: addEventListener( "tap", changeScenes )
 
 
-    button2 = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    button2:setFillColor(255/255, 255/255, 0/255)
-    sceneGroup:insert(button)
-    button2: addEventListener( "tap", scene1 )
+    creditButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
+    creditButton:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(creditButton)
+    creditButton: addEventListener( "tap", credits )
+
+    aboutButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
+    aboutButton:setFillColor(255/255, 155/255, 0/255)
+    sceneGroup:insert(aboutButton)
+    aboutButton: addEventListener( "tap", goToAbout )
+
+
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
@@ -54,7 +71,7 @@ function scene:show( event )
  
     local sceneGroup = self.view
     local phase = event.phase
- 
+    
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
@@ -74,8 +91,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-        -- Code here runs immediately after the scene goes entirely off screen
- 
+    creditButton:removeEventListener( "tap", changeScenes )
     end
 end
  
@@ -84,7 +100,8 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    -- Code here runs prior to the removal of scene's view
+    sceneGroup:remove(playButton)
+    sceneGroup:remove(creditButton)
  
 end
  
