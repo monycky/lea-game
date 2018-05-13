@@ -11,28 +11,32 @@ local scene = composer.newScene()
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 
-local bg
-local titlel
-local button
+local creditBg
+local creditTitle
+local creditText
+local iconCredit
+local backHomeButton
 
 local function changeScenes()
-	composer.gotoScene("levelselect", {effect = "slideLeft", time = 500})
+	composer.gotoScene("", {effect = "slideLeft", time = 500})
 end
 
 -- create()
 function scene:create( event )
  
     local sceneGroup = self.view
-
-
     
-    
-    bg = display.newImageRect("background.png", 1050, 700)
-    sceneGroup:insert(bg)
+    creditBg = display.newImageRect("background.png", 1050, 700)
+    sceneGroup:insert(creditBg)
 
-    title = display.newText("credits", 235, 90, "", 30)
-    title:setFillColor(1,1,1)
-    sceneGroup:insert(title)
+    creditTitle = display.newText("credits", 235, 90, "", 30)
+    creditTitle:setFillColor(1,1,1)
+    sceneGroup:insert(creditTitle)
+
+
+    creditText = display.newText("aqui os creditos do jogo", 235, 150, "", 30)
+    creditText:setFillColor(1,1,1)
+    sceneGroup:insert(creditText)
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
