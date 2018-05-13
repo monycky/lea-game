@@ -75,6 +75,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
+        --backHomeButton:removeEventListener( "tap", goToHome )
         -- Code here runs immediately after the scene goes entirely off screen
  
     end
@@ -85,6 +86,13 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
+
+    local sceneGroup = self.view
+    sceneGroup:remove(aboutBg)
+    sceneGroup:remove(aboutTitle)
+    sceneGroup:remove(aboutText)
+    sceneGroup:remove(aboutIcon)
+ 
     -- Code here runs prior to the removal of scene's view
  
 end
