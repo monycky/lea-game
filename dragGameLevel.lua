@@ -16,19 +16,19 @@ local dragGameLevelFourButton
 
 local backToActivities
 
-local function goTodragGameLevelOne()
+local function goToDragGameLevelOne()
 	composer.gotoScene("dragGameLevelOne", {effect = "slideLeft", time = 500})
 end
 
-local function goTodragGameLevelTwo()
+local function goToDragGameLevelTwo()
     composer.gotoScene("dragGameLeveTwo", {effect = "slideLeft", time = 500})
 end
 
-local function goTodragGameLevelThree()
+local function goToDragGameLevelThree()
     composer.gotoScene("dragGameLevelThree", {effect = "slideLeft", time = 500})
 end
 
-local function goTodragGameLevelFour()
+local function goToDragGameLevelFour()
     composer.gotoScene("dragGameLevelFour", {effect = "slideLeft", time = 500})
 end
 
@@ -47,19 +47,19 @@ function scene:create( event )
 
     dragGameLevelOneButton = display.newImage('level1.png', 100, 170) -- OK
     sceneGroup:insert(dragGameLevelOneButton)
-    dragGameLevelOneButton: addEventListener("tap", goTodragGameLevelFour)
+    dragGameLevelOneButton: addEventListener("tap", goToDragGameLevelOne)
 
     dragGameLevelTwoButton = display.newImage('level2.png', 190, 170) -- OK
-    sceneGroup:insert(dragGameLevelOneButton)
-    dragGameLevelOneButton: addEventListener("tap", goTodragGameLevelTwo)
+    sceneGroup:insert(dragGameLevelTwoButton)
+    dragGameLevelTwoButton: addEventListener("tap", goToDragGameLevelTwo)
 
     dragGameLevelThreeButton = display.newImage('level3.png', 290, 170) -- OK
-    sceneGroup:insert(dragGameLevelOneButton)
-    dragGameLevelOneButton: addEventListener("tap", goTodragGameLevelThree)
+    sceneGroup:insert(dragGameLevelThreeButton)
+    dragGameLevelThreeButton: addEventListener("tap", goToDragGameLevelThree)
 
     dragGameLevelFourButton = display.newImage('level4.png', 390, 170) -- OK
-    sceneGroup:insert(dragGameLevelOneButton)
-    dragGameLevelOneButton: addEventListener("tap", goTodragGameLevelFour)
+    sceneGroup:insert(dragGameLevelFourButton)
+    dragGameLevelFourButton: addEventListener("tap", goToDragGameLevelFour)
 
 
     dragGameLevelTitle = display.newText("Drag Game Levels", 235, 90, "", 30)
