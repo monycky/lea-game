@@ -1,31 +1,30 @@
 local composer = require( "composer" )
  
 local scene = composer.newScene()
- 
--- -----------------------------------------------------------------------------------
--- Code outside of the scene event functions below will only be executed ONCE unless
--- the scene is removed entirely (not recycled) via "composer.removeScene()"
--- -----------------------------------------------------------------------------------
- 
- 
-
- 
--- -----------------------------------------------------------------------------------
+ -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 local bg
 local titlel
 local button
+local ladybird 
+
+
 
 local function changeScenes()
 	composer.gotoScene("level", {effect = "slideLeft", time = 500})
 end
 
-
+local function scene1()
+    composer.gotoScene("credit", {effect = "slideLeft", time = 500})
+end
  
 -- create()
 function scene:create( event )
  
+--    ladybird = display.newImage('ladybird.png', 80, 170) -- OK
+
+
     local sceneGroup = self.view
 
 
@@ -38,16 +37,19 @@ function scene:create( event )
 
 
     button = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    button:setFillColor(255/255, 255/255, 0/255)
+    button:setFillColor(255/225, 100/255, 120/255)
     sceneGroup:insert(button)
-
     button: addEventListener( "tap", changeScenes )
 
+
+    button2 = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
+    button2:setFillColor(255/255, 255/255, 0/255)
+    sceneGroup:insert(button)
+    button2: addEventListener( "tap", scene1 )
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
 end
- 
  
 -- show()
 function scene:show( event )
@@ -63,7 +65,6 @@ function scene:show( event )
  
     end
 end
- 
  
 -- hide()
 function scene:hide( event )
