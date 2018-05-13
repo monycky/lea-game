@@ -17,8 +17,8 @@ local creditText
 local iconCredit
 local backHomeButton
 
-local function changeScenes()
-	composer.gotoScene("", {effect = "slideLeft", time = 500})
+local function goToHome()
+	composer.gotoScene("home", {effect = "slideRight", time = 500})
 end
 
 -- create()
@@ -33,15 +33,20 @@ function scene:create( event )
     creditTitle:setFillColor(1,1,1)
     sceneGroup:insert(creditTitle)
 
-
     creditText = display.newText("aqui os creditos do jogo", 235, 150, "", 30)
     creditText:setFillColor(1,1,1)
     sceneGroup:insert(creditText)
 
+
+    backHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
+    backHomeButton:setFillColor(255/225, 100/255, 120/255)
+    sceneGroup:insert(backHomeButton)
+    backHomeButton: addEventListener( "tap", goToHome )
+
+
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
 end
- 
  
 -- show()
 function scene:show( event )
@@ -69,6 +74,10 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
+        backHomeButton:removeEventListener( "tap", goToHome )
+       
+
+
         -- Code here runs immediately after the scene goes entirely off screen
  
     end
@@ -79,6 +88,12 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
+    sceneGroup:remove(creditBg)
+    sceneGroup:remove(creditTitle)
+    sceneGroup:remove(creditText)
+    sceneGroup:remove(iconCredit)
+ 
+
     -- Code here runs prior to the removal of scene's view
  
 end
