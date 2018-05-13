@@ -78,6 +78,7 @@ function scene:hide( event )
  
     elseif ( phase == "did" ) then
     sceneGroup:removeEventListener( "tap", changeScenes ) 
+    button2:removeEventListener( "tap", changeScenes )
     end
 end
  
