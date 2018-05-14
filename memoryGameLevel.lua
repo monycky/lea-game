@@ -45,19 +45,19 @@ function scene:create( event )
     sceneGroup:insert(dragGameLevelBg)
 
 
-    dragGameLevelOneButton = display.newImage('level1.png', 100, 170) -- OK
+    dragGameLevelOneButton = display.newImage('yellowLevel1.png', 100, 170) -- OK
     sceneGroup:insert(dragGameLevelOneButton)
     dragGameLevelOneButton: addEventListener("tap", goToDragGameLevelOne)
 
-    dragGameLevelTwoButton = display.newImage('level2.png', 190, 170) -- OK
+    dragGameLevelTwoButton = display.newImage('yellowLevel2.png', 190, 170) -- OK
     sceneGroup:insert(dragGameLevelTwoButton)
     dragGameLevelTwoButton: addEventListener("tap", goToDragGameLevelTwo)
 
-    dragGameLevelThreeButton = display.newImage('level3.png', 290, 170) -- OK
+    dragGameLevelThreeButton = display.newImage('yellowLevel3.png', 290, 170) -- OK
     sceneGroup:insert(dragGameLevelThreeButton)
     dragGameLevelThreeButton: addEventListener("tap", goToDragGameLevelThree)
 
-    dragGameLevelFourButton = display.newImage('level4.png', 390, 170) -- OK
+    dragGameLevelFourButton = display.newImage('yellowLevel4.png', 390, 170) -- OK
     sceneGroup:insert(dragGameLevelFourButton)
     dragGameLevelFourButton: addEventListener("tap", goToDragGameLevelFour)
 
