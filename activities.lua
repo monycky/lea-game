@@ -10,6 +10,8 @@ local activitiesBg
 local activitiesTitle
 local dragGameLevelButton
 local memoryGameLevelButton
+local puzzleGameLevelButton
+
 local backToHomeButton
 
 
@@ -34,29 +36,25 @@ function scene:create( event )
     activitiesBg = display.newImageRect("background.png", 1050, 700)
     sceneGroup:insert(activitiesBg)
 
-    activitiesTitle = display.newText("activities screen", 235, 90, "", 30)
+    activitiesTitle = display.newText("activities screen", 235, 50, "", 30)
     activitiesTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(activitiesTitle)
 
-
-    dragGameLevelButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    dragGameLevelButton:setFillColor(255/225, 100/255, 120/255)
+    dragGameLevelButton = display.newImage('shapes.png', 100, 170) -- OK
     sceneGroup:insert(dragGameLevelButton)
-    dragGameLevelButton: addEventListener("tap", goToDragGameLevel)
-
-
-    memoryGameLevelButton = display.newRect(display.contentCenterX, display.contentHeight*.5, display.contentWidth*.2, display.contentHeight*.10)
-    memoryGameLevelButton:setFillColor(255/255, 155/255, 0/255)
+    dragGameLevelButton:addEventListener("tap", goToDragGameLevel)
+ 
+    memoryGameLevelButton = display.newImage('1.png', 245, 170)
     sceneGroup:insert(memoryGameLevelButton)
-    memoryGameLevelButton: addEventListener("tap", goToMemoryGameLevel) 
+    memoryGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
+ 
+    puzzleGameLevelButton = display.newImage('puzzle.png', 390, 170)
+    sceneGroup:insert(puzzleGameLevelButton)
+    puzzleGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
 
-
-    backToHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.9, display.contentWidth*.2, display.contentHeight*.10)
-    backToHomeButton:setFillColor(255/255, 255/255, 0/255)
+    backToHomeButton = display.newImage('arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
-    backToHomeButton: addEventListener("tap", goToHome)
-
-    -- Code here runs when the scene is first created but has not yet appeared on screen
+    backToHomeButton:addEventListener("tap", goToHome)
  
 end
  
@@ -85,7 +83,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    backToHomeButton:removeEventListener("tap", goToHome)
+--    backToHomeButton:removeEventListener("tap", goToHome)
     end
 end
  
