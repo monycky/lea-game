@@ -66,7 +66,7 @@ function scene:create( event )
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
-    backToHomeButton = display.newImage('arrow.png', 5, 50) -- OK
+    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
     backToHomeButton:addEventListener("tap", goToActivities)
  

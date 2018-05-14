@@ -40,19 +40,19 @@ function scene:create( event )
     activitiesTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(activitiesTitle)
 
-    dragGameLevelButton = display.newImage('shapes.png', 100, 170) -- OK
-    sceneGroup:insert(dragGameLevelButton)
-    dragGameLevelButton:addEventListener("tap", goToDragGameLevel)
- 
-    memoryGameLevelButton = display.newImage('1.png', 245, 170)
+    memoryGameLevelButton = display.newImage('1.png', 100, 170)
     sceneGroup:insert(memoryGameLevelButton)
     memoryGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
- 
+
+    dragGameLevelButton = display.newImage('shapes.png', 245, 170) -- OK
+    sceneGroup:insert(dragGameLevelButton)
+    dragGameLevelButton:addEventListener("tap", goToDragGameLevel)
+  
     puzzleGameLevelButton = display.newImage('puzzle.png', 390, 170)
     sceneGroup:insert(puzzleGameLevelButton)
     puzzleGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
 
-    backToHomeButton = display.newImage('arrow.png', 5, 50) -- OK
+    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
     backToHomeButton:addEventListener("tap", goToHome)
  

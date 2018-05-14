@@ -16,6 +16,7 @@ local creditTitle
 local creditText
 local creditIcon
 local backHomeButton
+local star 
 
 local function goToHome()
 	composer.gotoScene("home", {effect = "slideRight", time = 500})
@@ -29,19 +30,24 @@ function scene:create( event )
     creditBg = display.newImageRect("background.png", 1050, 700)
     sceneGroup:insert(creditBg)
 
+
+    star = display.newImage("star.png", 100, 190)
+    sceneGroup:insert(star)
+
+
     creditTitle = display.newText("credits", 235, 90, "", 30)
     creditTitle:setFillColor(1,1,1)
     sceneGroup:insert(creditTitle)
 
-    creditText = display.newText("aqui os creditos do jogo", 235, 150, "", 30)
+    creditText = display.newText("", 235, 150, "", 30)
     creditText:setFillColor(1,1,1)
     sceneGroup:insert(creditText)
 
 
-    backHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    backHomeButton:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(backHomeButton)
-    backHomeButton: addEventListener( "tap", goToHome )
+    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
+    sceneGroup:insert(backToHomeButton)
+    backToHomeButton:addEventListener("tap", goToHome)
+ 
 
 
     -- Code here runs when the scene is first created but has not yet appeared on screen
