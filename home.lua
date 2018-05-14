@@ -34,7 +34,7 @@ function scene:create( event )
 
 --    homeIcon = display.newImage('ladybird.png', 80, 170) -- OK
 
-    homeBg = display.newImageRect("bg.png", 1050, 700)
+    homeBg = display.newImageRect("bg5.png", 1050, 700)
     sceneGroup:insert(homeBg)
 
     girl = display.newImage("girl.png", 100, 190)
