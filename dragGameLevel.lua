@@ -66,11 +66,10 @@ function scene:create( event )
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
-    backToHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.11, display.contentWidth*.2, display.contentHeight*.10)
-    backToHomeButton:setFillColor(255/255, 255/255, 0/255)
+    backToHomeButton = display.newImage('arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
-    backToHomeButton: addEventListener("tap", goToActivities)
-
+    backToHomeButton:addEventListener("tap", goToActivities)
+ 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
 end
@@ -100,10 +99,15 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    backToActivities:removeEventListener("tap", goToActivities)
+--    backToActivities:removeEventListener("tap", goToActivities)
+
+    dragGameLevelOneButton:removeEventListener("tap", goToDragGameLevelOne)
+    dragGameLevelOneButton:removeEventListener("tap", goToDragGameLevelOne)
+    dragGameLevelOneButton:removeEventListener("tap", goToDragGameLevelOne)
+    dragGameLevelOneButton:removeEventListener("tap", goToDragGameLevelOne)
+    dragGameLevelOneButton:removeEventListener("tap", goToDragGameLevelOne)
     end
 end
- 
  
 -- destroy()
 function scene:destroy( event )
@@ -116,9 +120,7 @@ function scene:destroy( event )
 
     sceneGroup:remove(backToActivities)
 
- 
 end
- 
  
 -- -----------------------------------------------------------------------------------
 -- Scene event function listeners
