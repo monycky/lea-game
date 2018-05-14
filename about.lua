@@ -27,7 +27,7 @@ function scene:create( event )
  
     local sceneGroup = self.view
 
-    aboutBg = display.newImageRect("background.png", 1050, 700)
+    aboutBg = display.newImageRect("bgSalmon.jpg", 1050, 700)
     sceneGroup:insert(aboutBg)
 
     aboutTitle = display.newText("About game teach", 235, 90, "", 30)
@@ -38,12 +38,10 @@ function scene:create( event )
     aboutText:setFillColor(1,1,1)
     sceneGroup:insert(aboutText)
 
-
-    backHomeButton = display.newRect(display.contentCenterX, display.contentHeight*.7, display.contentWidth*.2, display.contentHeight*.15)
-    backHomeButton:setFillColor(255/225, 100/255, 120/255)
-    sceneGroup:insert(backHomeButton)
-    backHomeButton: addEventListener( "tap", goToHome )
-
+    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
+    sceneGroup:insert(backToHomeButton)
+    backToHomeButton:addEventListener("tap", goToHome)
+ 
     -- Code here runs when the scene is first created but has not yet appeared on screen
  
 end
