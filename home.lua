@@ -13,6 +13,7 @@ local homeCreditButton
 local homeAboutButton
 local homeIcon 
 local girl
+local rainbow
 
 
 local function goToActivities()
@@ -37,12 +38,14 @@ function scene:create( event )
     homeBg = display.newImageRect("bg5.png", 1050, 700)
     sceneGroup:insert(homeBg)
 
-    girl = display.newImage("girl.png", 100, 190)
-    sceneGroup:insert(girl)
+    rainbow = display.newImage("lea-logo-02.png", 235, 120)
+    sceneGroup:insert(rainbow)
+    rainbow.width = 700
+    rainbow.height = 250
 
-    homeTitle = display.newText("LEA - name game", 345, 90, "", 30)
-    homeTitle:setFillColor(255, 255, 255)
-    sceneGroup:insert(homeTitle)
+
+    girl = display.newImage("girl.png", 235, 230)
+    sceneGroup:insert(girl)
 
     homeCreditButton = display.newImage('credits.png', 280, 250) -- OK
     sceneGroup:insert(homeCreditButton)
