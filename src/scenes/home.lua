@@ -16,7 +16,7 @@ local girl
 local rainbow
  
 local function goToActivities()
-	composer.gotoScene("activities", {effect = "slideLeft", time = 500})
+	composer.gotoScene("src.scenes.activities", {effect = "slideLeft", time = 500})
 end
 
 local function goToCredits()
@@ -24,7 +24,7 @@ local function goToCredits()
 end
 
 local function goToAbout()
-    composer.gotoScene("about", {effect = "slideLeft", time = 500})
+    composer.gotoScene("src.scenes.about", {effect = "slideLeft", time = 500})
 end
 
  
@@ -34,27 +34,27 @@ function scene:create( event )
 
 --    homeIcon = display.newImage('ladybird.png', 80, 170) -- OK
 
-    homeBg = display.newImageRect("bg5.png", 1050, 700)
+    homeBg = display.newImageRect("src/scenes/images/bg5.png", 1050, 700)
     sceneGroup:insert(homeBg)
 
-    rainbow = display.newImage("lea-logo-02.png", 240, 115)
+    rainbow = display.newImage("src/scenes/images/lea-logo-02.png", 240, 115)
     sceneGroup:insert(rainbow)
     rainbow.width = 700
     rainbow.height = 230
 
 
-    girl = display.newImage("girl.png", 235, 230)
+    girl = display.newImage("src/scenes/images/girl.png", 235, 230)
     sceneGroup:insert(girl)
 
     --homeCreditButton = display.newImage('credits.png', 280, 250) -- OK
     --sceneGroup:insert(homeCreditButton)
     --homeCreditButton:addEventListener("tap", goToCredits)
 
-    homePlayButton = display.newImage('play.png', 450, 270) -- OK
+    homePlayButton = display.newImage('src/scenes/images/play.png', 450, 270) -- OK
     sceneGroup:insert(homePlayButton)
     homePlayButton:addEventListener("tap", goToActivities)
 
-    homeAboutButton = display.newImage('heart.png', 30, 270) -- OK
+    homeAboutButton = display.newImage('src/scenes/images/heart.png', 30, 270) -- OK
     sceneGroup:insert(homeAboutButton)
     homeAboutButton:addEventListener("tap", goToAbout)
 

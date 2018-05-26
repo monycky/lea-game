@@ -1,69 +1,58 @@
 local composer = require( "composer" )
  
 local scene = composer.newScene()
-
+ 
+-- -----------------------------------------------------------------------------------
+-- Code outside of the scene event functions below will only be executed ONCE unless
+-- the scene is removed entirely (not recycled) via "composer.removeScene()"
+-- -----------------------------------------------------------------------------------
+ 
 -- -----------------------------------------------------------------------------------
 -- Scene event functions
 -- -----------------------------------------------------------------------------------
 
-local activitiesBg
-local activitiesTitle
-local dragGameLevelButton
-local memoryGameLevelButton
-local puzzleGameLevelButton
+local aboutBg
+local aboutTitle
+local aboutText
+local aboutIcon
+local backHomeButton
 
-local backToHomeButton
-
-
-local function goToDragGameLevel()
-	composer.gotoScene("dragGameLevel", {effect = "slideLeft", time = 500})
-end
-
-local function goToMemoryGameLevel()
-    composer.gotoScene("memoryGameLevel", {effect = "slideLeft", time = 500})
-end
 
 local function goToHome()
-    composer.gotoScene("home", {effect = "slideLeft", time = 500})
+	composer.gotoScene("src.scenes.home", {effect = "slideLeft", time = 500})
 end
 
- 
 -- create()
 function scene:create( event )
-
+ 
     local sceneGroup = self.view
 
-    activitiesBg = display.newImageRect("background.png", 1050, 700)
-    sceneGroup:insert(activitiesBg)
+    aboutBg = display.newImageRect("src/scenes/images/bgSalmon.jpg", 1050, 700)
+    sceneGroup:insert(aboutBg)
 
-    activitiesTitle = display.newText("activities screen", 235, 50, "", 30)
-    activitiesTitle:setFillColor(255, 255, 255)
-    sceneGroup:insert(activitiesTitle)
+    aboutTitle = display.newText("About game teach", 235, 90, "", 30)
+    aboutTitle:setFillColor(1,1,1)
+    sceneGroup:insert(aboutTitle)
 
-    memoryGameLevelButton = display.newImage('1.png', 100, 170)
-    sceneGroup:insert(memoryGameLevelButton)
-    memoryGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
+    aboutText = display.newText("texto sobre a tecnica usada para desenvolver o jogo", 235, 150, "", 20)
+    aboutText:setFillColor(1,1,1)
+    sceneGroup:insert(aboutText)
 
-    dragGameLevelButton = display.newImage('shapes.png', 245, 170) -- OK
-    sceneGroup:insert(dragGameLevelButton)
-    dragGameLevelButton:addEventListener("tap", goToDragGameLevel)
-  
-    puzzleGameLevelButton = display.newImage('puzzle.png', 390, 170)
-    sceneGroup:insert(puzzleGameLevelButton)
-    puzzleGameLevelButton:addEventListener("tap", goToMemoryGameLevel)
-
-    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
+    backToHomeButton = display.newImage('src/scenes/images/withe-arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
     backToHomeButton:addEventListener("tap", goToHome)
  
+    -- Code here runs when the scene is first created but has not yet appeared on screen
+ 
 end
+ 
  
 -- show()
 function scene:show( event )
  
     local sceneGroup = self.view
     local phase = event.phase
-    
+ 
     if ( phase == "will" ) then
         -- Code here runs when the scene is still off screen (but is about to come on screen)
  
@@ -72,6 +61,7 @@ function scene:show( event )
  
     end
 end
+ 
  
 -- hide()
 function scene:hide( event )
@@ -83,7 +73,9 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
---    backToHomeButton:removeEventListener("tap", goToHome)
+        --backHomeButton:removeEventListener( "tap", goToHome )
+        -- Code here runs immediately after the scene goes entirely off screen
+ 
     end
 end
  
@@ -92,8 +84,14 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    sceneGroup:remove(playButton)
-    sceneGroup:remove(creditButton)
+
+    local sceneGroup = self.view
+    sceneGroup:remove(aboutBg)
+    sceneGroup:remove(aboutTitle)
+    sceneGroup:remove(aboutText)
+    sceneGroup:remove(aboutIcon)
+ 
+    -- Code here runs prior to the removal of scene's view
  
 end
  

@@ -33,7 +33,7 @@ local function goToDragGameLevelFour()
 end
 
 local function goToActivities()
-    composer.gotoScene("activities", {effect = "slideLeft", time = 500})
+    composer.gotoScene("src.scenes.activities", {effect = "slideLeft", time = 500})
 end
  
 -- create()
@@ -41,32 +41,32 @@ function scene:create( event )
 
     local sceneGroup = self.view
 
-    dragGameLevelBg = display.newImageRect("background.png", 1050, 700)
+    dragGameLevelBg = display.newImageRect("src/scenes/images/background.png", 1050, 700)
     sceneGroup:insert(dragGameLevelBg)
 
 
-    dragGameLevelOneButton = display.newImage('yellowLevel1.png', 100, 170) -- OK
+    dragGameLevelOneButton = display.newImage('src/scenes/images/level1.png', 100, 170) -- OK
     sceneGroup:insert(dragGameLevelOneButton)
     dragGameLevelOneButton: addEventListener("tap", goToDragGameLevelOne)
 
-    dragGameLevelTwoButton = display.newImage('yellowLevel2.png', 190, 170) -- OK
+    dragGameLevelTwoButton = display.newImage('src/scenes/images/level2.png', 190, 170) -- OK
     sceneGroup:insert(dragGameLevelTwoButton)
     dragGameLevelTwoButton: addEventListener("tap", goToDragGameLevelTwo)
 
-    dragGameLevelThreeButton = display.newImage('yellowLevel3.png', 290, 170) -- OK
+    dragGameLevelThreeButton = display.newImage('src/scenes/images/level3.png', 290, 170) -- OK
     sceneGroup:insert(dragGameLevelThreeButton)
     dragGameLevelThreeButton: addEventListener("tap", goToDragGameLevelThree)
 
-    dragGameLevelFourButton = display.newImage('yellowLevel4.png', 390, 170) -- OK
+    dragGameLevelFourButton = display.newImage('src/scenes/images/level4.png', 390, 170) -- OK
     sceneGroup:insert(dragGameLevelFourButton)
     dragGameLevelFourButton: addEventListener("tap", goToDragGameLevelFour)
 
 
-    dragGameLevelTitle = display.newText("Memory Game Levels", 235, 90, "", 30)
+    dragGameLevelTitle = display.newText("Drag Game Levels", 235, 90, "", 30)
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
-    backToHomeButton = display.newImage('withe-arrow.png', 5, 50) -- OK
+    backToHomeButton = display.newImage('src/scenes/images/withe-arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
     backToHomeButton:addEventListener("tap", goToActivities)
  
