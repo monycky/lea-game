@@ -14,8 +14,7 @@ local homeAboutButton
 local homeIcon 
 local girl
 local rainbow
-
-
+ 
 local function goToActivities()
 	composer.gotoScene("activities", {effect = "slideLeft", time = 500})
 end
@@ -38,24 +37,24 @@ function scene:create( event )
     homeBg = display.newImageRect("bg5.png", 1050, 700)
     sceneGroup:insert(homeBg)
 
-    rainbow = display.newImage("lea-logo-02.png", 235, 120)
+    rainbow = display.newImage("lea-logo-02.png", 240, 115)
     sceneGroup:insert(rainbow)
     rainbow.width = 700
-    rainbow.height = 250
+    rainbow.height = 230
 
 
     girl = display.newImage("girl.png", 235, 230)
     sceneGroup:insert(girl)
 
-    homeCreditButton = display.newImage('credits.png', 280, 250) -- OK
-    sceneGroup:insert(homeCreditButton)
-    homeCreditButton:addEventListener("tap", goToCredits)
+    --homeCreditButton = display.newImage('credits.png', 280, 250) -- OK
+    --sceneGroup:insert(homeCreditButton)
+    --homeCreditButton:addEventListener("tap", goToCredits)
 
-    homePlayButton = display.newImage('play.png', 375, 190) -- OK
+    homePlayButton = display.newImage('play.png', 450, 270) -- OK
     sceneGroup:insert(homePlayButton)
     homePlayButton:addEventListener("tap", goToActivities)
 
-    homeAboutButton = display.newImage('about.png', 450, 250) -- OK
+    homeAboutButton = display.newImage('heart.png', 30, 270) -- OK
     sceneGroup:insert(homeAboutButton)
     homeAboutButton:addEventListener("tap", goToAbout)
 
@@ -86,7 +85,7 @@ function scene:hide( event )
         -- Code here runs when the scene is on screen (but is about to go off screen)
  
     elseif ( phase == "did" ) then
-    homeCreditButton:removeEventListener("tap", goToActivities)
+   -- homeCreditButton:removeEventListener("tap", goToActivities)
     end
 end
  
