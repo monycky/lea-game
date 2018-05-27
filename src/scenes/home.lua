@@ -27,7 +27,7 @@ local function goToAbout()
     composer.gotoScene("src.scenes.about", {effect = "slideLeft", time = 500})
 end
 
- 
+
 -- create()
 function scene:create( event )
     local sceneGroup = self.view

@@ -16,11 +16,11 @@ local backToHomeButton
 
 
 local function goToDragGameLevel()
-	composer.gotoScene("src.scenes.dragGameLevel", {effect = "slideLeft", time = 500})
+	composer.gotoScene("src.scenes.drag.dragGameLevel", {effect = "slideLeft", time = 500})
 end
 
 local function goToMemoryGameLevel()
-    composer.gotoScene("src.scenes.memoryGameLevel", {effect = "slideLeft", time = 500})
+    composer.gotoScene("src.scenes.memory.memoryGameLevel", {effect = "slideLeft", time = 500})
 end
 
 local function goToHome()
