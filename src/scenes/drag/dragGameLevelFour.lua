@@ -40,7 +40,7 @@ function dragShape(e)
         e.target.x = e.x - lastX
         e.target.y = e.y - lastY
     elseif(e.target.name == 'circle' and e.phase == 'ended' and hitTestObjects(e.target, circleHolder)) then
-        e.target.x = 400
+        e.target.x = 100
         e.target.y = 180
         e.target:removeEventListener('touch', dragShape)
         correct = correct + 1
@@ -52,7 +52,7 @@ function dragShape(e)
     end
     
     if(e.phase == 'ended' and correct == 1) then
---        alert()
+       -- alert()
     end
 end
 
@@ -73,7 +73,7 @@ function scene:create( event )
     dragGameLevelBg = display.newImageRect("src/scenes/images/background.png", 1050, 700)
     sceneGroup:insert(dragGameLevelBg)
 
-    dragGameLevelTitle = display.newText("Levels 1", 235, 90, "", 30)
+    dragGameLevelTitle = display.newText("", 235, 90, "", 30)
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
@@ -82,10 +82,10 @@ function scene:create( event )
     backToHomeButton:addEventListener("tap", goToDragGameLevel)
  
  
-    circleHolder = display.newImage("src/scenes/images/circleHolder.png", 400, 180)
+    circleHolder = display.newImage("src/scenes/images/hexagonHolder.png", 100, 180)
     sceneGroup:insert(circleHolder)
 
-    circle = display.newImage("src/scenes/images/circle.png", 100, 180)
+    circle = display.newImage("src/scenes/images/hexagon.png", 400, 180)
     sceneGroup:insert(circle)
 
     circle.name = 'circle'

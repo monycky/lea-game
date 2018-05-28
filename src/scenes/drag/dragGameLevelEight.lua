@@ -10,6 +10,12 @@ local goToDragGameLevel
 local circleHolder
 local circle
 
+local squareHolder
+local square
+
+local hexagonHolder
+local hexagon
+
 local hitTestObjects = {}
 local dragShape = {}
 local alert = {}
@@ -41,18 +47,23 @@ function dragShape(e)
         e.target.y = e.y - lastY
     elseif(e.target.name == 'circle' and e.phase == 'ended' and hitTestObjects(e.target, circleHolder)) then
         e.target.x = 400
-        e.target.y = 180
+        e.target.y = 100
         e.target:removeEventListener('touch', dragShape)
         correct = correct + 1
-        elseif(e.target.name == 'pentagon' and e.phase == 'ended' and hitTestObjects(e.target, pHolder)) then
-        e.target.x = 400
-        e.target.y = 150
+        elseif(e.target.name == 'square' and e.phase == 'ended' and hitTestObjects(e.target, squareHolder)) then
+        e.target.x = 200
+        e.target.y = 100
+        e.target:removeEventListener('touch', dragShape)
+        correct = correct + 1
+        elseif(e.target.name == 'hexagon' and e.phase == 'ended' and hitTestObjects(e.target, hexagonHolder)) then
+        e.target.x = 300
+        e.target.y = 100
         e.target:removeEventListener('touch', dragShape)
         correct = correct + 1
     end
     
-    if(e.phase == 'ended' and correct == 1) then
---        alert()
+    if(e.phase == 'ended' and correct == 3) then
+      --  alert()
     end
 end
 
@@ -70,10 +81,10 @@ function scene:create( event )
 
     local sceneGroup = self.view
 
-    dragGameLevelBg = display.newImageRect("src/scenes/images/background.png", 1050, 700)
+    dragGameLevelBg = display.newImageRect("src/scenes/images/bg5.png", 1050, 700)
     sceneGroup:insert(dragGameLevelBg)
 
-    dragGameLevelTitle = display.newText("Levels 1", 235, 90, "", 30)
+    dragGameLevelTitle = display.newText("", 235, 90, "", 30)
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
@@ -82,17 +93,36 @@ function scene:create( event )
     backToHomeButton:addEventListener("tap", goToDragGameLevel)
  
  
-    circleHolder = display.newImage("src/scenes/images/circleHolder.png", 400, 180)
+    circleHolder = display.newImage("src/scenes/images/heart.png", 400, 100)
     sceneGroup:insert(circleHolder)
 
-    circle = display.newImage("src/scenes/images/circle.png", 100, 180)
+    circle = display.newImage("src/scenes/images/heart.png", 100, 260)
     sceneGroup:insert(circle)
 
     circle.name = 'circle'
 
 
+    squareHolder = display.newImage("src/scenes/images/star4.png", 200, 100)
+    sceneGroup:insert(squareHolder)
+
+    square = display.newImage("src/scenes/images/star4.png", 200, 260)
+    sceneGroup:insert(square)
+
+    square.name = 'square'
+
+    hexagonHolder = display.newImage("src/scenes/images/hexagon2.png", 300, 100)
+    sceneGroup:insert(hexagonHolder)
+
+    hexagon = display.newImage("src/scenes/images/hexagon2.png", 300, 260)
+    sceneGroup:insert(hexagon)
+
+    hexagon.name = 'hexagon'
+
+
+
     circle:addEventListener('touch', dragShape)
-   
+    square:addEventListener('touch', dragShape) 
+    hexagon:addEventListener('touch', dragShape)   
 end
  
 -- show()

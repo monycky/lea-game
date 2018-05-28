@@ -5,11 +5,10 @@ local scene = composer.newScene()
 local dragGameLevelBg
 local dragGameLevelTitle
 local backToActivities
+local goToDragGameLevel
 
 local circleHolder
-local pHolder
-local pentagon
-local square
+local circle
 
 local hitTestObjects = {}
 local dragShape = {}
@@ -19,8 +18,8 @@ local alert = {}
 local correct = 0
 
 
-local function goToActivities()
-    composer.gotoScene("src.scenes.activities", {effect = "slideLeft", time = 500})
+local function goToDragGameLevel()
+    composer.gotoScene("src.scenes.drag.dragGameLevel", {effect = "slideLeft", time = 500})
 end
  
 
@@ -40,9 +39,9 @@ function dragShape(e)
     elseif(e.phase == 'moved') then
         e.target.x = e.x - lastX
         e.target.y = e.y - lastY
-    elseif(e.target.name == 'square' and e.phase == 'ended' and hitTestObjects(e.target, circleHolder)) then
+    elseif(e.target.name == 'circle' and e.phase == 'ended' and hitTestObjects(e.target, circleHolder)) then
         e.target.x = 400
-        e.target.y = 250
+        e.target.y = 180
         e.target:removeEventListener('touch', dragShape)
         correct = correct + 1
         elseif(e.target.name == 'pentagon' and e.phase == 'ended' and hitTestObjects(e.target, pHolder)) then
@@ -53,7 +52,7 @@ function dragShape(e)
     end
     
     if(e.phase == 'ended' and correct == 1) then
-        alert()
+--        alert()
     end
 end
 
@@ -74,37 +73,26 @@ function scene:create( event )
     dragGameLevelBg = display.newImageRect("src/scenes/images/background.png", 1050, 700)
     sceneGroup:insert(dragGameLevelBg)
 
-    dragGameLevelTitle = display.newText("Drag Game Levels", 235, 90, "", 30)
+    dragGameLevelTitle = display.newText("", 235, 90, "", 30)
     dragGameLevelTitle:setFillColor(255, 255, 255)
     sceneGroup:insert(dragGameLevelTitle)
 
     backToHomeButton = display.newImage('src/scenes/images/withe-arrow.png', 5, 50) -- OK
     sceneGroup:insert(backToHomeButton)
-    backToHomeButton:addEventListener("tap", goToActivities)
+    backToHomeButton:addEventListener("tap", goToDragGameLevel)
  
-    -- Code here runs when the scene is first created but has not yet appeared on screen
  
-    --Create the shapes
-    circleHolder = display.newImage("src/scenes/images/circleHolder.png", 400, 250)
+    circleHolder = display.newImage("src/scenes/images/triangleHolder.png", 400, 180)
     sceneGroup:insert(circleHolder)
 
-    pHolder = display.newImage("src/scenes/images/square-shape-color2.png", 400, 150)
-    sceneGroup:insert(pHolder)
+    circle = display.newImage("src/scenes/images/triangle.png", 100, 100)
+    sceneGroup:insert(circle)
+
+    circle.name = 'circle'
 
 
-    square = display.newImage("src/scenes/images/circle.png", 100, 250)
-    sceneGroup:insert(square)
-
-    pentagon = display.newImage("src/scenes/images/square-shape-color2.png", 100, 150)
-    sceneGroup:insert(square)
-
-    square.name = 'square'
-    pentagon.name = 'pentagon'
-
-
-    square:addEventListener('touch', dragShape)
-    pentagon:addEventListener('touch', dragShape)
-
+    circle:addEventListener('touch', dragShape)
+   
 end
  
 -- show()
@@ -141,7 +129,7 @@ end
 function scene:destroy( event )
  
     local sceneGroup = self.view
-    sceneGroup:remove(backToActivities)
+    sceneGroup:remove(dragGameLevel)
     sceneGroup:remove(circleHolder)
     sceneGroup:remove(pHolder)
 
