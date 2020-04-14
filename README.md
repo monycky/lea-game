@@ -1,4 +1,4 @@
-# Gamename! :video_game::boy::girl::new_moon:
+# Lea :video_game::boy::girl:
 
 
 ## Objetivo
